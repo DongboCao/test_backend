@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="30 seconds" >
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <contextName>candidate_service</contextName>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoders are assigned the type
+             ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="ERROR">
+        <appender-ref ref="STDOUT" />
+    </root>
+    <logger name="com.test.candidate" level="DEBUG"/>
+</configuration>

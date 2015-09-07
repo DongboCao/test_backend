@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootStarterVersion}")       
+
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'candidate-service'
+}
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "http://repo.spring.io/libs-release" }
+}
+
+
+dependencies {
+    compile project(':candidate-persistence')
+
+    compile group: 'org.springframework.boot', name:'spring-boot-starter-web',version:"$springBootStarterVersion"
+    compile group: 'org.springframework', name:'spring-websocket',version:"4.1.7.RELEASE"
+    compile group: 'org.springframework', name:'spring-messaging',version:"4.1.7.RELEASE"
+
+    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootStarterVersion"
+    testCompile "com.jayway.jsonpath:json-path:0.8.1"
+}
